@@ -50,7 +50,7 @@ export function ColumnColorPicker({ color, onChange }: ColumnColorPickerProps) {
       />
 
       {open && (
-        <div className="absolute left-0 top-[calc(100%+8px)] z-50 w-[188px] rounded-xl border border-[var(--border)] bg-white p-3 shadow-lg">
+        <div className="absolute left-0 top-[calc(100%+8px)] z-50 w-[188px] rounded-xl border border-[var(--border)] bg-[var(--surface)] p-3 shadow-lg">
           <p className="mb-2 text-[11px] font-medium uppercase tracking-wide text-[var(--muted)]">
             Bucket color
           </p>
@@ -74,7 +74,7 @@ export function ColumnColorPicker({ color, onChange }: ColumnColorPickerProps) {
           </div>
           <label
             htmlFor={inputId}
-            className="flex cursor-pointer items-center gap-2 rounded-lg border border-[var(--border)] px-2 py-1.5 text-xs text-[var(--muted)] hover:bg-slate-50"
+            className="flex cursor-pointer items-center gap-2 rounded-lg border border-[var(--border)] px-2 py-1.5 text-xs text-[var(--muted)] hover:bg-[var(--surface-hover)]"
           >
             <span className="shrink-0">Custom</span>
             <input

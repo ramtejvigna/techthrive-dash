@@ -58,7 +58,7 @@ export default function KanbanListPage() {
           </div>
         ) : boards.length === 0 ? (
           <FadeIn>
-            <div className="tech-frame flex flex-col items-center justify-center rounded-xl border border-dashed border-[var(--border-strong)] bg-white py-20 text-center">
+            <div className="tech-frame flex flex-col items-center justify-center rounded-xl border border-dashed border-[var(--border-strong)] bg-[var(--surface)] py-20 text-center">
               <p className="font-mono text-xs uppercase tracking-widest text-[var(--accent)]">
                 // empty_state
               </p>

@@ -85,7 +85,7 @@ export function DropdownMenuTrigger({
       aria-controls={menuId}
       onClick={() => setOpen(!open)}
       className={cn(
-        "inline-flex h-9 w-9 items-center justify-center rounded-lg border border-[var(--border)] bg-white text-[var(--muted)] shadow-sm transition-colors hover:border-[var(--border-strong)] hover:bg-slate-50 hover:text-[var(--foreground)]",
+        "inline-flex h-9 w-9 items-center justify-center rounded-lg border border-[var(--border)] bg-[var(--surface)] text-[var(--muted)] shadow-sm transition-colors hover:border-[var(--border-strong)] hover:bg-[var(--surface-hover)] hover:text-[var(--foreground)]",
         open && "border-[var(--accent)]/30 bg-[var(--accent-light)] text-[var(--accent)]",
         className,
       )}
@@ -112,7 +112,7 @@ export function DropdownMenuContent({
       id={menuId}
       role="menu"
       className={cn(
-        "absolute top-[calc(100%+6px)] z-50 min-w-[200px] overflow-hidden rounded-xl border border-[var(--border)] bg-white py-1 shadow-lg",
+        "absolute top-[calc(100%+6px)] z-50 min-w-[200px] overflow-hidden rounded-xl border border-[var(--border)] bg-[var(--surface)] py-1 shadow-lg",
         align === "end" ? "right-0" : "left-0",
         className,
       )}
@@ -123,7 +123,7 @@ export function DropdownMenuContent({
 }
 
 const itemClassName =
-  "flex w-full items-center gap-2 px-3 py-2 text-left text-sm text-[var(--foreground)] transition-colors hover:bg-slate-50";
+  "flex w-full items-center gap-2 px-3 py-2 text-left text-sm text-[var(--foreground)] transition-colors hover:bg-[var(--surface-hover)]";
 
 export function DropdownMenuItem({
   children,
@@ -148,7 +148,7 @@ export function DropdownMenuItem({
       }}
       className={cn(
         itemClassName,
-        destructive && "text-red-600 hover:bg-red-50 hover:text-red-700",
+        destructive && "text-red-600 hover:bg-red-500/10 hover:text-red-500",
         className,
       )}
     >

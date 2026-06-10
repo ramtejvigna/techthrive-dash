@@ -45,26 +45,26 @@ export function getColumnTheme(column: { id: string; color?: string | null }): C
 function buildColumnTheme(hex: string): ColumnTheme {
   return {
     color: hex,
-    columnStyle: { backgroundColor: `color-mix(in srgb, ${hex} 14%, white)` },
-    headerStyle: { backgroundColor: `color-mix(in srgb, ${hex} 8%, white)` },
+    columnStyle: { backgroundColor: `color-mix(in srgb, ${hex} 14%, var(--surface))` },
+    headerStyle: { backgroundColor: `color-mix(in srgb, ${hex} 8%, var(--surface))` },
     badgeStyle: {
-      backgroundColor: "rgba(255, 255, 255, 0.92)",
-      border: `1px solid color-mix(in srgb, ${hex} 22%, white)`,
-      color: `color-mix(in srgb, ${hex} 72%, black)`,
-      boxShadow: "0 1px 2px rgba(15, 23, 42, 0.05)",
+      backgroundColor: "color-mix(in srgb, var(--surface) 92%, transparent)",
+      border: `1px solid color-mix(in srgb, ${hex} 22%, var(--surface))`,
+      color: `color-mix(in srgb, ${hex} 72%, var(--foreground))`,
+      boxShadow: "0 1px 2px var(--accent-glow)",
     },
     dotStyle: { backgroundColor: hex },
     dropRingStyle: {
-      boxShadow: `0 0 0 2px color-mix(in srgb, ${hex} 35%, white)`,
+      boxShadow: `0 0 0 2px color-mix(in srgb, ${hex} 35%, var(--surface))`,
     },
     addBtnStyle: {
-      borderColor: `color-mix(in srgb, ${hex} 30%, white)`,
-      color: `color-mix(in srgb, ${hex} 65%, black)`,
+      borderColor: `color-mix(in srgb, ${hex} 30%, var(--surface))`,
+      color: `color-mix(in srgb, ${hex} 65%, var(--foreground))`,
     },
-    cardBg: "bg-white",
-    cardBorder: "border-slate-200",
-    cardText: "text-slate-900",
-    cardMuted: "text-slate-500",
+    cardBg: "bg-[var(--surface)]",
+    cardBorder: "border-[var(--border)]",
+    cardText: "text-[var(--foreground)]",
+    cardMuted: "text-[var(--muted)]",
     accent: hex,
   };
 }
@@ -75,9 +75,9 @@ export function getColumnThemeById(columnId: string): ColumnTheme {
 }
 
 export const PRIORITY_STYLES = {
-  low: "bg-slate-100 text-slate-600 ring-1 ring-slate-200",
-  medium: "bg-slate-200/80 text-slate-700 ring-1 ring-slate-300/50",
-  high: "bg-fuchsia-100 text-fuchsia-700 ring-1 ring-fuchsia-200",
+  low: "bg-[var(--surface-hover)] text-[var(--muted)] ring-1 ring-[var(--border)]",
+  medium: "bg-[var(--surface-subtle)]/80 text-[var(--foreground)] ring-1 ring-[var(--border-strong)]/50",
+  high: "bg-fuchsia-500/15 text-fuchsia-400 ring-1 ring-fuchsia-500/30",
 } as const;
 
 export function formatDueLabel(dueDate: string | null): string | null {

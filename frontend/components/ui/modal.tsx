@@ -28,7 +28,7 @@ export function Modal({
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="absolute inset-0 bg-slate-900/20 backdrop-blur-sm"
+            className="absolute inset-0 bg-[var(--overlay)] backdrop-blur-sm"
             onClick={onClose}
             aria-hidden
           />
@@ -38,7 +38,7 @@ export function Modal({
             exit={{ opacity: 0, scale: 0.96, y: 8 }}
             transition={{ duration: 0.2, ease: [0.22, 1, 0.36, 1] }}
             className={cn(
-              "tech-frame relative z-10 w-full max-w-lg rounded-xl border border-[var(--border)] bg-white p-6 shadow-xl shadow-slate-900/10",
+              "tech-frame relative z-10 w-full max-w-lg rounded-xl border border-[var(--border)] bg-[var(--surface)] p-6 shadow-xl shadow-black/10",
               className,
             )}
           >

@@ -109,7 +109,7 @@ export function BoardHeader({
             disabled={saving}
             maxLength={120}
             className={cn(
-              "mt-1 w-full max-w-xl rounded-lg border border-[var(--accent)]/40 bg-white px-2 py-1",
+              "mt-1 w-full max-w-xl rounded-lg border border-[var(--accent)]/40 bg-[var(--surface)] px-2 py-1",
               "text-2xl font-semibold tracking-tight text-[var(--foreground)] shadow-sm",
               "outline-none ring-2 ring-[var(--accent)]/20",
             )}
@@ -142,7 +142,7 @@ export function BoardHeader({
               <Link
                 key={project.id}
                 href={`/dashboard/projects/${project.id}`}
-                className="rounded-full border border-[var(--border)] bg-white px-2.5 py-0.5 text-xs font-medium text-[var(--accent)] shadow-sm transition-colors hover:bg-[var(--accent-light)]"
+                className="rounded-full border border-[var(--border)] bg-[var(--surface)] px-2.5 py-0.5 text-xs font-medium text-[var(--accent)] shadow-sm transition-colors hover:bg-[var(--accent-light)]"
               >
                 {project.name}
               </Link>

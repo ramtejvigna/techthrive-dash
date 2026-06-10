@@ -127,7 +127,7 @@ export function KanbanColumn({
             type="button"
             onClick={() => onDeleteColumn(column.id)}
             onPointerDown={stopDragPropagation}
-            className="rounded-md px-1.5 py-0.5 text-sm text-[var(--muted)] opacity-0 transition-all hover:bg-white/80 hover:text-red-500 group-hover:opacity-100"
+            className="rounded-md px-1.5 py-0.5 text-sm text-[var(--muted)] opacity-0 transition-all hover:bg-[var(--surface)]/80 hover:text-red-500 group-hover:opacity-100"
             title="Remove bucket"
           >
             ×
@@ -157,7 +157,7 @@ export function KanbanColumn({
           whileHover={{ scale: 1.01 }}
           whileTap={{ scale: 0.99 }}
           onClick={() => onAddCard(column.id)}
-          className="mt-auto flex w-full items-center justify-center gap-1.5 rounded-xl border border-dashed py-2.5 text-sm transition-colors duration-200 hover:bg-white/70"
+          className="mt-auto flex w-full items-center justify-center gap-1.5 rounded-xl border border-dashed py-2.5 text-sm transition-colors duration-200 hover:bg-[var(--surface)]/70"
           style={theme.addBtnStyle}
         >
           <span className="text-base leading-none">+</span>

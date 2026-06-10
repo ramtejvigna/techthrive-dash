@@ -1,5 +1,6 @@
 "use client";
 
+import { ThemeToggleCompact } from "@/components/theme-toggle-compact";
 import { motion } from "framer-motion";
 
 const features = [
@@ -16,8 +17,11 @@ export default function AuthLayout({
 }) {
   return (
     <div className="tech-dots relative flex min-h-full flex-1 overflow-hidden">
+      <div className="absolute right-4 top-4 z-10">
+        <ThemeToggleCompact />
+      </div>
       {/* Left panel — tech showcase */}
-      <div className="relative hidden flex-1 flex-col justify-between border-r border-[var(--border)] bg-white p-12 lg:flex">
+      <div className="relative hidden flex-1 flex-col justify-between border-r border-[var(--border)] bg-[var(--surface)] p-12 lg:flex">
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -62,7 +66,7 @@ export default function AuthLayout({
                 initial={{ opacity: 0, x: -12 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.25 + i * 0.08 }}
-                className="flex items-center gap-3 rounded-lg border border-[var(--border)] bg-slate-50/80 px-4 py-2.5"
+                className="flex items-center gap-3 rounded-lg border border-[var(--border)] bg-[var(--surface-muted)] px-4 py-2.5"
               >
                 <span className="font-mono text-[10px] font-medium text-[var(--accent)]">
                   {f.code}
@@ -91,7 +95,7 @@ export default function AuthLayout({
       </div>
 
       {/* Right panel — form */}
-      <div className="relative flex flex-1 items-center justify-center bg-white/60 px-4 py-12 backdrop-blur-sm lg:max-w-md">
+      <div className="relative flex flex-1 items-center justify-center bg-[var(--surface)]/60 px-4 py-12 backdrop-blur-sm lg:max-w-md">
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}

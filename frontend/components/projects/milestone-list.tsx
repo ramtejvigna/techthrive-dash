@@ -94,7 +94,7 @@ export function MilestoneList({
                           ? "bg-emerald-500"
                           : status === "in_progress"
                             ? "bg-[var(--accent)]"
-                            : "bg-slate-300"
+                            : "bg-[var(--surface-subtle)]"
                       }`}
                       aria-hidden
                     />

@@ -55,7 +55,7 @@ function CardBody({ card, theme }: { card: KanbanCardType; theme: ColumnTheme })
           </span>
         )}
         {card.project_name && (
-          <span className="inline-block max-w-[120px] truncate rounded-md bg-slate-100 px-2 py-0.5 text-[11px] font-medium text-slate-600">
+          <span className="inline-block max-w-[120px] truncate rounded-md bg-[var(--surface-hover)] px-2 py-0.5 text-[11px] font-medium text-[var(--muted)]">
             {card.project_name}
           </span>
         )}

@@ -1,6 +1,6 @@
 @import "tailwindcss";
 
-/* ── Light tech theme (forced) ── */
+/* ── Light tech theme ── */
 :root {
   color-scheme: light;
 
@@ -9,6 +9,9 @@
   --surface: #ffffff;
   --surface-elevated: #ffffff;
   --surface-muted: #f8fafc;
+  --surface-hover: #f1f5f9;
+  --surface-subtle: #e2e8f0;
+  --overlay: rgba(15, 23, 42, 0.2);
   --border: #e2e8f0;
   --border-strong: #cbd5e1;
   --muted: #64748b;
@@ -32,6 +35,40 @@
 
   --radius: 0.75rem;
   --font-mono: var(--font-geist-mono), "JetBrains Mono", ui-monospace, monospace;
+}
+
+/* ── Dark tech theme ── */
+.dark {
+  color-scheme: dark;
+
+  --background: #0a0f1a;
+  --foreground: #e8edf5;
+  --surface: #111827;
+  --surface-elevated: #1a2234;
+  --surface-muted: #151d2e;
+  --surface-hover: #1e293b;
+  --surface-subtle: #334155;
+  --overlay: rgba(0, 0, 0, 0.5);
+  --border: #1e293b;
+  --border-strong: #334155;
+  --muted: #94a3b8;
+  --muted-light: #64748b;
+
+  --accent: #3b8bff;
+  --accent-hover: #5ca0ff;
+  --accent-light: #0f2347;
+  --accent-cyan: #22d3ee;
+  --accent-glow: rgba(59, 139, 255, 0.18);
+
+  --sidebar-bg: #0d1321;
+  --sidebar-fg: #e8edf5;
+  --sidebar-muted: #94a3b8;
+  --sidebar-active-bg: #152040;
+  --sidebar-active-fg: #5ca0ff;
+  --sidebar-border: #1e293b;
+
+  --grid-color: rgba(59, 139, 255, 0.06);
+  --grid-dot: rgba(59, 139, 255, 0.12);
 }
 
 @theme inline {
@@ -136,6 +173,22 @@ body {
   box-shadow:
     0 4px 16px var(--accent-glow),
     0 0 0 1px rgba(255, 255, 255, 0.9) inset;
+}
+
+.dark .tech-card {
+  box-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.25),
+    0 0 0 1px rgba(255, 255, 255, 0.04) inset;
+}
+
+.dark .tech-card:hover {
+  box-shadow:
+    0 4px 16px var(--accent-glow),
+    0 0 0 1px rgba(255, 255, 255, 0.06) inset;
+}
+
+.dark .glass-card {
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
 }
 
 .glass-card {

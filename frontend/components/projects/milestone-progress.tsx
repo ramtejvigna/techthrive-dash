@@ -23,7 +23,7 @@ export function MilestoneProgressBar({
   return (
     <div className={cn("space-y-2", className)}>
 
-      <div className="flex h-1.5 overflow-hidden rounded-full bg-slate-100">
+      <div className="flex h-1.5 overflow-hidden rounded-full bg-[var(--surface-hover)]">
         {counts.done > 0 && (
           <div
             className="h-full bg-emerald-500 transition-all duration-500"
@@ -40,7 +40,7 @@ export function MilestoneProgressBar({
         )}
         {counts.todo > 0 && (
           <div
-            className="h-full bg-slate-300 transition-all duration-500"
+            className="h-full bg-[var(--surface-subtle)] transition-all duration-500"
             style={{ width: `${(counts.todo / total) * 100}%` }}
             title={`${counts.todo} to do`}
           />

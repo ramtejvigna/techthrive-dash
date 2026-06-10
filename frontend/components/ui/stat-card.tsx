@@ -53,7 +53,7 @@ export function StatCard({ label, value, icon, accent, delay = 0 }: StatCardProp
             >
               {String(value).padStart(2, "0")}
             </motion.p>
-            <div className="mt-3 h-0.5 w-full overflow-hidden rounded-full bg-slate-100">
+            <div className="mt-3 h-0.5 w-full overflow-hidden rounded-full bg-[var(--surface-hover)]">
               <motion.div
                 className={cn("h-full rounded-full", styles.bar)}
                 initial={{ width: 0 }}

@@ -9,6 +9,7 @@ import {
   ProjectsIcon,
   YoutubeIcon,
 } from "@/components/icons/nav-icons";
+import { ThemeToggle } from "@/components/theme-toggle";
 import { Button } from "@/components/ui/button";
 import { api } from "@/lib/api";
 import { cn } from "@/lib/utils";
@@ -88,7 +89,7 @@ export function Sidebar() {
                   "group relative flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition-all duration-200",
                   active
                     ? "bg-[var(--sidebar-active-bg)] text-[var(--sidebar-active-fg)]"
-                    : "text-[var(--sidebar-muted)] hover:bg-slate-50 hover:text-[var(--sidebar-fg)]",
+                    : "text-[var(--sidebar-muted)] hover:bg-[var(--surface-hover)] hover:text-[var(--sidebar-fg)]",
                 )}
               >
                 {active && (
@@ -134,6 +135,7 @@ export function Sidebar() {
       </nav>
 
       <div className="mt-auto space-y-2 border-t border-[var(--sidebar-border)] p-4">
+        <ThemeToggle />
         <div className="flex items-center gap-2 px-1">
           <span className="pulse-dot h-2 w-2 rounded-full bg-emerald-500" />
           <p className="font-mono text-[10px] uppercase tracking-wider text-emerald-600">
