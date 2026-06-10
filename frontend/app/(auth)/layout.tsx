@@ -1,5 +1,6 @@
 "use client";
 
+import { RequireGuest } from "@/components/auth/auth-guard";
 import { ThemeToggleCompact } from "@/components/theme-toggle-compact";
 import { motion } from "framer-motion";
 
@@ -16,6 +17,7 @@ export default function AuthLayout({
   children: React.ReactNode;
 }) {
   return (
+    <RequireGuest>
     <div className="tech-dots relative flex min-h-full flex-1 overflow-hidden">
       <div className="absolute right-4 top-4 z-10">
         <ThemeToggleCompact />
@@ -106,5 +108,6 @@ export default function AuthLayout({
         </motion.div>
       </div>
     </div>
+    </RequireGuest>
   );
 }
