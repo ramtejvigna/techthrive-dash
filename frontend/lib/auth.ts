@@ -14,7 +14,9 @@ export function getRefreshToken(): string | null {
 export function setTokens(access: string, refresh: string): void {
   localStorage.setItem(ACCESS_TOKEN_KEY, access);
   localStorage.setItem(REFRESH_TOKEN_KEY, refresh);
-  document.cookie = `access_token=${access}; path=/; max-age=3600; SameSite=Lax`;
+  const secure =
+    typeof window !== "undefined" && window.location.protocol === "https:";
+  document.cookie = `access_token=${access}; path=/; max-age=3600; SameSite=Lax${secure ? "; Secure" : ""}`;
 }
 
 export function clearTokens(): void {
