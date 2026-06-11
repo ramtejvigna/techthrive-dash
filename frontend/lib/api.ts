@@ -6,6 +6,7 @@ import type {
   KanbanCard,
   KanbanColumn,
   Milestone,
+  MilestoneComment,
   PaginatedResponse,
   Project,
   User,
@@ -179,6 +180,36 @@ export const api = {
   deleteMilestone: (projectId: string, milestoneId: string) =>
     apiFetch<void>(
       `/api/projects/${projectId}/milestones/${milestoneId}/`,
+      { method: "DELETE" },
+    ),
+
+  getMilestoneComments: async (projectId: string, milestoneId: string) => {
+    const data = await apiFetch<PaginatedResponse<MilestoneComment> | MilestoneComment[]>(
+      `/api/projects/${projectId}/milestones/${milestoneId}/comments/`,
+    );
+    return unwrapList(data);
+  },
+
+  createMilestoneComment: (
+    projectId: string,
+    milestoneId: string,
+    body: string,
+  ) =>
+    apiFetch<MilestoneComment>(
+      `/api/projects/${projectId}/milestones/${milestoneId}/comments/`,
+      {
+        method: "POST",
+        body: JSON.stringify({ body }),
+      },
+    ),
+
+  deleteMilestoneComment: (
+    projectId: string,
+    milestoneId: string,
+    commentId: string,
+  ) =>
+    apiFetch<void>(
+      `/api/projects/${projectId}/milestones/${milestoneId}/comments/${commentId}/`,
       { method: "DELETE" },
     ),
 

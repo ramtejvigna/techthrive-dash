@@ -1,9 +1,16 @@
 from django.db.models import Count, Q
+from django.shortcuts import get_object_or_404
 from rest_framework import generics, viewsets
+from rest_framework.exceptions import PermissionDenied
 from rest_framework.permissions import IsAuthenticated
 
-from .models import Milestone, Project
-from .serializers import MilestoneSerializer, ProjectListSerializer, ProjectSerializer
+from .models import Milestone, MilestoneComment, Project
+from .serializers import (
+    MilestoneCommentSerializer,
+    MilestoneSerializer,
+    ProjectListSerializer,
+    ProjectSerializer,
+)
 
 
 class ProjectViewSet(viewsets.ModelViewSet):
@@ -78,3 +85,42 @@ class MilestoneDetailView(generics.RetrieveUpdateDestroyAPIView):
 
         milestone = serializer.save()
         sync_milestone_card_content(milestone)
+
+
+class MilestoneCommentListCreateView(generics.ListCreateAPIView):
+    serializer_class = MilestoneCommentSerializer
+    permission_classes = [IsAuthenticated]
+
+    def get_queryset(self):
+        return MilestoneComment.objects.filter(
+            milestone_id=self.kwargs["milestone_id"],
+            milestone__project_id=self.kwargs["project_id"],
+            milestone__project__user=self.request.user,
+        ).select_related("user")
+
+    def perform_create(self, serializer):
+        milestone = get_object_or_404(
+            Milestone,
+            id=self.kwargs["milestone_id"],
+            project_id=self.kwargs["project_id"],
+            project__user=self.request.user,
+        )
+        serializer.save(user=self.request.user, milestone=milestone)
+
+
+class MilestoneCommentDetailView(generics.RetrieveUpdateDestroyAPIView):
+    serializer_class = MilestoneCommentSerializer
+    permission_classes = [IsAuthenticated]
+    lookup_url_kwarg = "comment_id"
+
+    def get_queryset(self):
+        return MilestoneComment.objects.filter(
+            milestone_id=self.kwargs["milestone_id"],
+            milestone__project_id=self.kwargs["project_id"],
+            milestone__project__user=self.request.user,
+        ).select_related("user")
+
+    def check_object_permissions(self, request, obj):
+        super().check_object_permissions(request, obj)
+        if request.method not in ("GET", "HEAD", "OPTIONS") and obj.user_id != request.user.id:
+            raise PermissionDenied("You can only edit your own comments.")

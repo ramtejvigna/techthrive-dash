@@ -8,7 +8,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardDescription, CardTitle } from "@/components/ui/card";
 import { Modal } from "@/components/ui/modal";
 import { api } from "@/lib/api";
-import type { Board, Milestone, Project } from "@/lib/types";
+import type { Board, Milestone, Project, User } from "@/lib/types";
 import { formatDate } from "@/lib/utils";
 import Link from "next/link";
 import { useParams, useRouter } from "next/navigation";
@@ -19,16 +19,19 @@ export default function ProjectDetailPage() {
   const router = useRouter();
   const [project, setProject] = useState<Project | null>(null);
   const [boards, setBoards] = useState<Board[]>([]);
+  const [currentUser, setCurrentUser] = useState<User | null>(null);
   const [loading, setLoading] = useState(true);
   const [editOpen, setEditOpen] = useState(false);
 
   async function loadProject() {
-    const [projectData, boardData] = await Promise.all([
+    const [projectData, boardData, userData] = await Promise.all([
       api.getProject(params.id),
       api.getBoards(),
+      api.me(),
     ]);
     setProject(projectData);
     setBoards(boardData);
+    setCurrentUser(userData);
   }
 
   useEffect(() => {
@@ -143,7 +146,9 @@ export default function ProjectDetailPage() {
           <CardDescription>Track key deliverables for this project.</CardDescription>
           <div className="mt-4">
             <MilestoneList
+              projectId={params.id}
               milestones={project.milestones || []}
+              currentUser={currentUser}
               boardLinked={Boolean(project.board_id)}
               onCreate={handleCreateMilestone}
               onToggle={project.board_id ? undefined : handleToggleMilestone}

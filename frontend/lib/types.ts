@@ -17,6 +17,14 @@ export interface Milestone {
   updated_at: string;
 }
 
+export interface MilestoneComment {
+  id: string;
+  body: string;
+  user: User;
+  created_at: string;
+  updated_at: string;
+}
+
 export interface Project {
   id: string;
   name: string;

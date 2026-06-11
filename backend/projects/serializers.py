@@ -1,6 +1,16 @@
+from accounts.serializers import UserSerializer
 from rest_framework import serializers
 
-from .models import Milestone, Project
+from .models import Milestone, MilestoneComment, Project
+
+
+class MilestoneCommentSerializer(serializers.ModelSerializer):
+    user = UserSerializer(read_only=True)
+
+    class Meta:
+        model = MilestoneComment
+        fields = ("id", "body", "user", "created_at", "updated_at")
+        read_only_fields = ("id", "user", "created_at", "updated_at")
 
 
 class MilestoneSerializer(serializers.ModelSerializer):
